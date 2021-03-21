@@ -27,7 +27,7 @@ jobs:
           github_token: ${{ secrets.PAT }}
       - name: Merge dev to master
         uses: devmasx/merge-branch@v1.3.1	
-        if: env.PAT	
+        if: env.PAT1	
         with:	
           type: now	
           from_branch: dev	
