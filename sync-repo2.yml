@@ -1,0 +1,32 @@
+name: 同步&合并
+on:
+  schedule:
+    - cron: '0 */1 * * *'
+  workflow_dispatch:
+jobs:
+  merge-branch:
+    env:
+      PAT: ${{ secrets.PAT }}
+    runs-on: ubuntu-latest
+    steps:    
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          
+       - name: sync scripts
+         uses: repo-sync/github-sync@v2
+        if: env.PAT
+         with:
+          source_repo: "https://github.com/whyour/qinglong.git"
+          source_branch: "master"
+          destination_branch: "dev"
+          github_token: ${{ secrets.PAT }}
+
+       - name: Merge dev to master
+         uses: devmasx/merge-branch@v1.3.1	
+        if: env.PAT	
+         with:	
+          type: now	
+          from_branch: dev	
+          target_branch: master
+          github_token: ${{ secrets.PAT }}
