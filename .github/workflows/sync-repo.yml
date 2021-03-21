@@ -32,4 +32,4 @@ jobs:
           type: now	
           from_branch: dev	
           target_branch: master
-          github_token: ${{ secrets.PAT }}
+          github_token: ${{ secrets.PAT1 }}
