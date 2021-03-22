@@ -1,36 +1,30 @@
-name: Sync multiple branches
+name: sync + merge
 on:
-  push: 
-    branches:
-      - '*'
+  schedule:
+    - cron: '30 0-15/3 * * *'
+  workflow_dispatch:
 jobs:
-  sync-branch:
+  merge-branch:
+    env:
+      PAT: ${{ secrets.PAT }}
     runs-on: ubuntu-latest
-    steps:   
+    steps:    
       - uses: actions/checkout@v2
         with:
-          persist-credentials: false          
-      - name: sync scripts
+          persist-credentials: false         
+      - name: sync lxk0301-jd_scripts
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
           source_repo: "https://github.com/whyour/qinglong.git"
           source_branch: "master"
           destination_branch: "dev"
-          github_token: ${{ secrets.PAT }}  
-      - uses: actions/checkout@v2     
-      - name: Merge main-> dev
-        uses: devmasx/merge-branch@v1.3.1
-        with:
-          type: now
-          from_branch: main
-          target_branch: dev
           github_token: ${{ secrets.PAT }}
-
-      - name: Merge dev -> master
-        uses: devmasx/merge-branch@v1.3.1
-        with:
-          type: now
-          from_branch: dev
-          target_branch: master
+      - name: Merge dev to main
+        uses: devmasx/merge-branch@v1.3.1	
+        if: env.PAT	
+        with:	
+          type: now	
+          from_branch: dev	
+          target_branch: main
           github_token: ${{ secrets.PAT }}
