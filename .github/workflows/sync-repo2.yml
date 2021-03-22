@@ -1,14 +1,24 @@
 name: Sync multiple branches
 on:
-  push:
-#    branches:
+  push: 
+    branches:
       - '*'
 jobs:
   sync-branch:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-
+    steps:   
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false          
+      - name: sync scripts
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/whyour/qinglong.git"
+          source_branch: "master"
+          destination_branch: "dev"
+          github_token: ${{ secrets.PAT }}  
+      - uses: actions/checkout@v2     
       - name: Merge main-> dev
         uses: devmasx/merge-branch@v1.3.1
         with:
@@ -17,7 +27,7 @@ jobs:
           target_branch: dev
           github_token: ${{ secrets.PAT }}
 
-      - name: Merge dev -> aster
+      - name: Merge dev -> master
         uses: devmasx/merge-branch@v1.3.1
         with:
           type: now
