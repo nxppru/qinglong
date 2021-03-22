@@ -1,4 +1,4 @@
-name: 同步&合并
+name: 同步whyour
 on:
   schedule:
     - cron: '0 */1 * * *'
