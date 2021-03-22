@@ -46,4 +46,4 @@ jobs:
           platforms: linux/amd64,linux/arm64/v8
           push: true
           tags: |
-            pm0n0/qinglong:${{ steps.date.outputs.today }}
+            pm0n0/qinglong:${{ steps.vars.outputs.tag }}
