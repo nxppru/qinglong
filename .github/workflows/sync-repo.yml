@@ -28,5 +28,5 @@ jobs:
         with:	
           type: now	
           from_branch: dev	
-          target_branch: main
+          target_branch: master
           github_token: ${{ secrets.PAT }}
