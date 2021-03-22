@@ -18,8 +18,10 @@ jobs:
         with:
           source_repo: "https://github.com/whyour/qinglong.git"
           source_branch: "master"
-          destination_branch: "nxppru/dev"
+          destination_branch: "dev"
           github_token: ${{ secrets.PAT }}
+          
+
       - name: Merge dev to master
         uses: devmasx/merge-branch@v1.3.1	
         if: env.PAT	
