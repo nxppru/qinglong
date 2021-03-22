@@ -8,17 +8,7 @@ jobs:
     runs-on: ubuntu-18.04
     if: github.repository == 'nxppru/qinglong'
     timeout-minutes: 2
-    steps:
-    - name: Init Build Dependencies
-      env:
-        DEBIAN_FRONTEND: noninteractive
-      run: |
-        sudo -E rm -rf /etc/apt/sources.list.d
-        sudo -E apt-get update -y
-        sudo -E apt-get install -y build-essential git git-core curl wget
-        sudo -E apt-get clean -y
-        git config --global user.name 'GitHub Actions' && git config --global user.email 'noreply@github.com'
-    
+    steps:     
     - name: Clone Master
       run: |
         git clone https://github.com/whyour/qinglong.git master
