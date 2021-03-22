@@ -34,9 +34,9 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Get version # 获取 Tag Version
-        id: vars
-        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+      #- name: Get version # 获取 Tag Version
+      #  id: vars
+      #  run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
 
       - name: Build and push
         uses: docker/build-push-action@v2
@@ -46,4 +46,5 @@ jobs:
           platforms: linux/amd64,linux/arm64/v8
           push: true
           tags: |
-            pm0n0/qinglong:${{ steps.vars.outputs.tag }}
+            pm0n0/qinglong:latest
+            #pm0n0/qinglong:${{ steps.vars.outputs.tag }}
