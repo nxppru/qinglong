@@ -1,0 +1,26 @@
+name: Sync multiple branches
+on:
+  push:
+#    branches:
+      - '*'
+jobs:
+  sync-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Merge main-> dev
+        uses: devmasx/merge-branch@v1.3.1
+        with:
+          type: now
+          from_branch: main
+          target_branch: dev
+          github_token: ${{ secrets.PAT }}
+
+      - name: Merge dev -> aster
+        uses: devmasx/merge-branch@v1.3.1
+        with:
+          type: now
+          from_branch: dev
+          target_branch: master
+          github_token: ${{ secrets.PAT }}
