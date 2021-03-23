@@ -3,9 +3,9 @@ name: Master-Publish Docker image
 on:
   push:
     # branches: # 仅 master 分支
-    # - master
+    - master
     #tags: # 仅带 tag:v* 时构建
-    #  - v*
+    # - v*
 env:
   # 设置 docker 镜像名
   IMAGE_NAME: qinglong
