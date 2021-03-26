@@ -1,4 +1,4 @@
-name: Master-Publish Docker image
+name: 构建推送镜像
 
 on:
   push:
