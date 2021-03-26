@@ -47,4 +47,4 @@ jobs:
           push: true
           tags: |
             pm0n0/qinglong:latest           
-            pm0n0/qinglong:${{today}}}
+            pm0n0/qinglong:3.26
