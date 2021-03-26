@@ -1,3 +1,5 @@
+name: 合并到master
+
 on:
   schedule:
   - cron:  "0 */1 * * *"
