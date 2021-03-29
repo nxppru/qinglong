@@ -18,5 +18,5 @@ jobs:
         with:
           source_repo: "https://github.com/whyour/qinglong.git"
           source_branch: "master"
-          destination_branch: "dev"
+          destination_branch: "maste"
           github_token: ${{ secrets.PAT }}
