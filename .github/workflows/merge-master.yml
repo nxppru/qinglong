@@ -16,6 +16,6 @@ jobs:
       uses: repo-sync/github-sync@v2
       with:
         source_repo: "https://github.com/nxppru/qinglong.git"
-        source_branch: "dev"
-        destination_branch: "master"
+        source_branch: "master"
+        destination_branch: "dev"
         github_token: ${{ secrets.PAT2 }}
