@@ -2,8 +2,8 @@ name: 构建&推送镜像
 
 on:
   push:
-    branches: # 仅 master 分支
-    - dev
+    #branches: # 仅 master 分支
+    #- dev
     #tags: # 仅带 tag:v* 时构建
     #- v*
 env:
