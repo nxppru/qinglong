@@ -1,4 +1,4 @@
-name: 合并到master
+name: 合并到dev
 
 on:
   schedule:
